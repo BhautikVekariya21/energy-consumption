@@ -17,7 +17,8 @@ import json
 from datetime import datetime
 
 from config import get_settings, get_model_config
-from models import BaseModel, create_model, ModelConfig
+from models import BaseModel, create_model
+from models.base_model import ModelConfig
 from data import DataSpec, ScalerManager
 from utils import get_logger, save_json, load_json, Timer, format_time
 

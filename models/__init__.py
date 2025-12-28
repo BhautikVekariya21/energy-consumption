@@ -3,18 +3,12 @@
 MODELS MODULE
 ================================================================================
 Neural network models for electricity load and source-wise generation forecasting.
-
-Available Models:
-- TransformerModel: Standard transformer encoder for time series
-- TemporalFusionTransformer: TFT for interpretable forecasting
-- SourcePredictor: Multi-output model for source-wise generation
-- EnsembleModel: Ensemble of multiple architectures
-================================================================================
 """
 
 from .base_model import (
     BaseModel,
     ModelOutput,
+    ModelConfig,  # ADD THIS
     create_model,
     load_model
 )
@@ -38,7 +32,7 @@ from .source_predictor import (
 
 __all__ = [
     # Base
-    'BaseModel', 'ModelOutput', 'create_model', 'load_model',
+    'BaseModel', 'ModelOutput', 'ModelConfig', 'create_model', 'load_model',
     
     # Transformer
     'TransformerModel', 'TransformerBlock', 
