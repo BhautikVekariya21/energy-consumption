@@ -869,7 +869,3 @@ ipywidgets>=7.7.0
 ```
 
 ---
-
-<p align="center">
-  Made with ⚡ by Your Name
-</p>
