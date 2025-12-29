@@ -1,2 +1,352 @@
+# ============================================================================
+# ELECTRICITY FORECASTING PROJECT - .gitignore
+# ============================================================================
+
+# ============================================================================
+# PYTHON
+# ============================================================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+pytest_cache/
+
+# Translations
+*.mo
+*.pot
+
+# ============================================================================
+# VIRTUAL ENVIRONMENTS
+# ============================================================================
+.env
 .venv
-.pkl
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pythonenv*/
+.conda/
+conda-env/
+
+# ============================================================================
+# JUPYTER / COLAB NOTEBOOKS
+# ============================================================================
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+*.ipynb_checkpoints
+.jupyter/
+
+# Notebook outputs (optional - uncomment if you want to ignore)
+# *.ipynb
+
+# ============================================================================
+# DATA FILES (Large files - don't commit to git)
+# ============================================================================
+# Raw data
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.h5
+*.hdf5
+
+# Pickle files
+*.pkl
+*.pickle
+
+# NumPy files
+*.npy
+*.npz
+
+# Compressed data
+*.zip
+*.tar
+*.tar.gz
+*.gz
+*.7z
+*.rar
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Data directories
+data/
+raw_data/
+processed_data/
+cache/
+cached_data/
+
+# ============================================================================
+# MODEL FILES (Large - use Git LFS or cloud storage)
+# ============================================================================
+# Keras models
+*.keras
+*.h5
+*.hdf5
+
+# TensorFlow
+*.pb
+*.pbtxt
+saved_model/
+checkpoints/
+*.ckpt*
+*.index
+*.data-*
+
+# PyTorch
+*.pt
+*.pth
+*.bin
+
+# Scikit-learn / Joblib
+*.joblib
+
+# ONNX
+*.onnx
+
+# Model directories
+models/
+saved_models/
+trained_models/
+weights/
+model_checkpoints/
+
+# ============================================================================
+# SCALERS & PREPROCESSORS
+# ============================================================================
+scalers/
+preprocessors/
+encoders/
+
+# ============================================================================
+# LOGS & OUTPUTS
+# ============================================================================
+logs/
+*.log
+*.out
+*.err
+
+# TensorBoard
+runs/
+tensorboard/
+events.out.tfevents.*
+
+# Training outputs
+outputs/
+results/
+predictions/
+forecasts/
+
+# Plots (optional - keep if small, ignore if many)
+plots/
+figures/
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.pdf
+
+# ============================================================================
+# IDE & EDITORS
+# ============================================================================
+# VS Code
+.vscode/
+*.code-workspace
+
+# PyCharm / JetBrains
+.idea/
+*.iml
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Rope
+.ropeproject
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ============================================================================
+# OS SPECIFIC
+# ============================================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ============================================================================
+# CREDENTIALS & SECRETS (NEVER COMMIT!)
+# ============================================================================
+*.pem
+*.key
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# Environment files with secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# API keys
+secrets.json
+secrets.yaml
+secrets.yml
+credentials.json
+config.local.json
+
+# Google Cloud
+*-service-account.json
+service-account*.json
+
+# AWS
+.aws/
+
+# ============================================================================
+# GOOGLE COLAB / DRIVE
+# ============================================================================
+# Colab specific
+sample_data/
+.config/
+
+# Google Drive mount artifacts
+drive/
+
+# ============================================================================
+# DOCKER
+# ============================================================================
+.docker/
+docker-compose.override.yml
+
+# ============================================================================
+# MISC
+# ============================================================================
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Memory mapped files
+*.mmap
+
+# Profiling
+*.prof
+*.lprof
+
+# Documentation builds
+docs/_build/
+site/
+
+# ============================================================================
+# PROJECT SPECIFIC - ELECTRICITY FORECASTING
+# ============================================================================
+# Large forecast outputs
+electricity_forecast_multihorizon/
+electricity_forecast_output/
+
+# PJM data cache
+pjm_data.pkl
+pjm_*.csv
+
+# Training history (optional - keep small JSONs)
+# *_history.json
+
+# Prediction files
+*_predictions.npy
+*_actuals.npy
+
+# Best model checkpoints during training
+*_best.keras
+*_best.weights.h5
