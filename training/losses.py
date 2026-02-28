@@ -223,6 +223,7 @@ class CombinedForecastLoss(keras.losses.Loss):
         mse_weight: float = 1.0,
         mae_weight: float = 0.5,
         mape_weight: float = 0.1,
+        demand_bias_weight: float = 0.2,
         horizon_decay: float = 0.98,
         name: str = 'combined_loss'
     ):
@@ -233,6 +234,7 @@ class CombinedForecastLoss(keras.losses.Loss):
             mse_weight: Weight for MSE component
             mae_weight: Weight for MAE component
             mape_weight: Weight for MAPE component
+            demand_bias_weight: Weight for aggregate demand bias penalty
             horizon_decay: Decay rate for horizon weighting
             name: Loss name
         """
@@ -241,6 +243,7 @@ class CombinedForecastLoss(keras.losses.Loss):
         self.mse_weight = mse_weight
         self.mae_weight = mae_weight
         self.mape_weight = mape_weight
+        self.demand_bias_weight = demand_bias_weight
         self.horizon_decay = horizon_decay
     
     def call(self, y_true: tf.Tensor, y_pred: tf.Tensor) -> tf.Tensor:
@@ -255,6 +258,12 @@ class CombinedForecastLoss(keras.losses.Loss):
         mape = tf.reduce_mean(
             tf.abs(y_true - y_pred) / (tf.abs(y_true) + 1e-8)
         )
+
+        # Keep average prediction close to real demand level
+        demand_bias = tf.abs(
+            tf.reduce_mean(y_true, axis=-1) - tf.reduce_mean(y_pred, axis=-1)
+        )
+        demand_bias = tf.reduce_mean(demand_bias)
         
         # Horizon weighting
         if len(y_true.shape) > 1:
@@ -271,7 +280,8 @@ class CombinedForecastLoss(keras.losses.Loss):
         total_loss = (
             self.mse_weight * mse +
             self.mae_weight * mae +
-            self.mape_weight * mape
+            self.mape_weight * mape +
+            self.demand_bias_weight * demand_bias
         )
         
         return total_loss
@@ -282,6 +292,7 @@ class CombinedForecastLoss(keras.losses.Loss):
             'mse_weight': self.mse_weight,
             'mae_weight': self.mae_weight,
             'mape_weight': self.mape_weight,
+            'demand_bias_weight': self.demand_bias_weight,
             'horizon_decay': self.horizon_decay
         })
         return config
